@@ -62,5 +62,5 @@ From grammatical patterns to stylistic profiles, it offers interpretable, reprod
 # --- CTA Button ---
 st.markdown('<div class="cta">', unsafe_allow_html=True)
 if st.button("Start Analysis", use_container_width=True):
-    st.switch_page("1_analyze.py")
+    st.switch_page("1_analyze")
 st.markdown('</div>', unsafe_allow_html=True)
