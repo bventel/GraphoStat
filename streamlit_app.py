@@ -6,7 +6,7 @@ from PIL import Image
 st.set_page_config(
     page_title="GraphoStat",
     layout="centered",
-    initial_sidebar_state="collapsed"
+    # initial_sidebar_state="collapsed"
 )
 
 # --- Custom CSS ---
