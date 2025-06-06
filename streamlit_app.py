@@ -45,7 +45,7 @@ logo = Image.open("images/graphostat_logo.png")  # Replace with path to your Psi
 
 col1, col2 = st.columns([1, 6])  # Slightly more space for the logo
 with col1:
-    st.image("images/graphostat_logo.png", width=100)  # Try 100–150
+    st.image("images/graphostat_logo.png", width=150)  # Try 100–150
 with col2:
     st.markdown('<div class="title">GraphoStat</div>', unsafe_allow_html=True)
     st.markdown('<div class="tagline">Structured Analysis of Ancient Greek Texts</div>', unsafe_allow_html=True)
