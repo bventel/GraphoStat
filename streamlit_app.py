@@ -1,6 +1,7 @@
 import streamlit as st
+from PIL import Image
 
-# --- Page config ---
+# --- Page Configuration ---
 st.set_page_config(
     page_title="GraphoStat",
     layout="centered",
@@ -10,9 +11,9 @@ st.set_page_config(
 # --- Custom CSS ---
 st.markdown("""
     <style>
-    .title { 
-        font-size: 3rem; 
-        font-weight: 700; 
+    .title {
+        font-size: 3rem;
+        font-weight: 700;
         font-family: Georgia, serif;
         margin-bottom: 0.25rem;
     }
@@ -36,21 +37,26 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- Title + Tagline ---
-st.markdown('<div class="title">GraphoStat</div>', unsafe_allow_html=True)
-st.markdown('<div class="tagline">Statistical Profiles of Greek Texts — From Scripture to Classical Thought</div>', unsafe_allow_html=True)
+# --- Logo and Title ---
+logo = Image.open("graphostat_logo.png")  # Replace with path to your Psi logo image
 
-# --- Description Text ---
+col1, col2 = st.columns([1, 8])
+with col1:
+    st.image(logo, width=60)
+with col2:
+    st.markdown('<div class="title">GraphoStat</div>', unsafe_allow_html=True)
+    st.markdown('<div class="tagline">Structured Analysis of Ancient Greek Texts</div>', unsafe_allow_html=True)
+
+# --- Main Description ---
 st.markdown("""
 <div class="description">
-Welcome to <strong>GraphoStat</strong>, a platform for analyzing Greek texts using standardized grammatical metrics. Whether you're exploring Paul’s letters or the writings of Plutarch, GraphoStat helps you extract meaningful patterns from parsing codes — all without needing programming skills.
-
-Our system offers consistent, reproducible reports based on morphologically tagged Greek texts — including metrics like frequency, mean parsing vectors, PCA embeddings, and syntactic clustering. Built for scholars, theologians, and digital humanists alike.
+GraphoStat is a platform for structured analysis of ancient Greek texts.  
+From grammatical patterns to stylistic profiles, it offers interpretable, reproducible reports across Biblical and classical sources — for scholars, students, pastors, and anyone exploring the Greek language.
 </div>
 """, unsafe_allow_html=True)
 
 # --- CTA Button ---
 st.markdown('<div class="cta">', unsafe_allow_html=True)
-if st.button("🚀 Start Analysis"):
+if st.button("Start Analysis", use_container_width=True):
     st.switch_page("pages/1_📁_Analyze.py")
 st.markdown('</div>', unsafe_allow_html=True)
