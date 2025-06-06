@@ -38,7 +38,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Logo and Title ---
-logo = Image.open("graphostat_logo.png")  # Replace with path to your Psi logo image
+logo = Image.open("images/graphostat_logo.png")  # Replace with path to your Psi logo image
 
 col1, col2 = st.columns([1, 8])
 with col1:
