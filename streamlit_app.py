@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from PIL import Image
 
@@ -38,8 +39,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Logo and Title ---
-import os
-st.write("Current directory contents:", os.listdir("images"))
+# st.write("Current directory contents:", os.listdir("images"))
 
 logo = Image.open("images/graphostat_logo.png")  # Replace with path to your Psi logo image
 
