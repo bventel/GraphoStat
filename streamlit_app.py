@@ -38,6 +38,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Logo and Title ---
+import os
+st.write("Current directory contents:", os.listdir("images"))
+
 logo = Image.open("images/graphostat_logo.png")  # Replace with path to your Psi logo image
 
 col1, col2 = st.columns([1, 8])
