@@ -1,9 +1,18 @@
+import os
+import json
 import firebase_admin
 from firebase_admin import credentials, storage
 
 # Init only once
 if not firebase_admin._apps:
-    cred = credentials.Certificate("firebase_key.json")
+    # Load JSON string from env
+    firebase_json = os.environ.get("FIREBASE_KEY_JSON")
+    if not firebase_json:
+        raise ValueError("FIREBASE_KEY_JSON not set in environment variables.")
+
+    cert_dict = json.loads(firebase_json)
+    cred = credentials.Certificate(cert_dict)
+
     firebase_admin.initialize_app(cred, {
         "storageBucket": "digitalproducts-97155.appspot.com"
     })
