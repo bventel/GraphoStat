@@ -5,3 +5,7 @@ gunicorn==22.0.0
 Werkzeug==3.0.6
 flask-cors
 gunicorn
+firebase-admin
+matplotlib
+pandas
+fpdf    # (or reportlab, depending on PDF engine)
