@@ -33,6 +33,9 @@
 # if __name__ == "__main__":
 #     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 3000)))
 
+import os
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
 from utils.firebase import check_if_pdf_exists, upload_pdf_to_firestore
 from agents.pos_distribution import POSDistributionAgent
