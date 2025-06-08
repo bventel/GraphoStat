@@ -35,9 +35,12 @@
 
 import pandas as pd
 from utils.firebase import check_if_pdf_exists, upload_pdf_to_firestore
-# from agents.pos_distribution import POSDistributionAgent
-# from utils.llm import interpret_metric
-# from pdf.generator import generate_pdf
+from agents.pos_distribution import POSDistributionAgent
+from utils.llm import interpret_metric
+from pdf.generator import generate_pdf
+
+app = Flask(__name__)
+CORS(app)  # Enable CORS for frontend access
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
