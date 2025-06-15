@@ -87,25 +87,33 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 
+from agents.pos_distribution import POSDistributionAgent
+# from utils.firebase import check_if_pdf_exists, upload_pdf_to_firestore  # Not used yet
+# from utils.llm import interpret_metric  # Not used yet
+# from pdf.generator import generate_pdf  # Not used yet
+
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
     data = request.get_json()
-    book = data.get("book")
+    book = data.get("book")  # Expecting 'Romans', 'Matthew', etc.
 
     if not book:
         return jsonify({"error": "Missing 'book' in request."}), 400
 
-    try:
-        df = pd.read_csv(f"data/{book}.csv")
-    except FileNotFoundError:
-        return jsonify({"error": f"CSV file not found for '{book}'"}), 404
+    # 🔍 Run the POS Distribution Agent
+    metrics = POSDistributionAgent.run(book)
+
+    if "error" in metrics:
+        return jsonify({"error": metrics["error"]}), 500
 
     return jsonify({
         "book": book,
-        "columns": df.columns.tolist(),
-        "num_rows": len(df),
-        "sample_rows": df.head(3).to_dict(orient="records")
+        "metrics": metrics,
+        "source": "live"
     }), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
