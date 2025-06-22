@@ -114,10 +114,12 @@ def analyze():
         return jsonify({"error": metrics["error"]}), 500
 
     return jsonify({
-        "book": book,
-        "metrics": metrics,
-        "source": "live"
-    }), 200
+    "book": book,
+    "metrics": metrics,
+    "pdf_url": f"https://graphostat-api.onrender.com/download_pdf/{book.lower()}",
+    "source": "live"
+})
+
 
 @app.route("/download_pdf/<book>")
 def download_pdf(book):
