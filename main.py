@@ -88,6 +88,7 @@ from flask_cors import CORS
 import pandas as pd
 
 from agents.pos_distribution import POSDistributionAgent
+from agents.pdf_agent import PDFGenerationAgent
 # from utils.firebase import check_if_pdf_exists, upload_pdf_to_firestore  # Not used yet
 # from utils.llm import interpret_metric  # Not used yet
 # from pdf.generator import generate_pdf  # Not used yet
@@ -115,5 +116,12 @@ def analyze():
         "source": "live"
     }), 200
 
+@app.route("/download_pdf/<book>")
+def download_pdf(book):
+    pdf_path = f"pdf/{book.lower()}_report.pdf"
+    if not os.path.exists(pdf_path):
+        return jsonify({"error": "PDF not found"}), 404
+    return send_file(pdf_path, as_attachment=True)
+    
 if __name__ == "__main__":
     app.run(debug=True)
