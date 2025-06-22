@@ -109,7 +109,7 @@ def analyze():
 
     print("[DEBUG] Metrics returned by POSDistributionAgent:")
     print(metrics)
-
+    print("pdf_path: ", pdf_path)
 
     pdf_path = PDFGenerationAgent.run(book, metrics)
 
