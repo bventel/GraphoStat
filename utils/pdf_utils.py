@@ -97,4 +97,7 @@ def generate_pdf(book_name, pos_data):
                               "It forms the basis for stylistic comparison in later sections.")
 
     pdf.output(pdf_path)
+    print("[✓] generate_pdf() from pdf_utils.py is running")
+    print(f"[✓] Saving PDF to: {pdf_path}")
+
     return pdf_path

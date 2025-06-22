@@ -89,9 +89,6 @@ import pandas as pd
 
 from agents.pos_distribution import POSDistributionAgent
 from agents.pdf_agent import PDFGenerationAgent
-# from utils.firebase import check_if_pdf_exists, upload_pdf_to_firestore  # Not used yet
-# from utils.llm import interpret_metric  # Not used yet
-# from pdf.generator import generate_pdf  # Not used yet
 
 app = Flask(__name__)
 CORS(app)
