@@ -107,6 +107,8 @@ def analyze():
     # 🔍 Run the POS Distribution Agent
     metrics = POSDistributionAgent.run(book)
 
+    pdf_path = PDFGenerationAgent.run(book, metrics)
+
     if "error" in metrics:
         return jsonify({"error": metrics["error"]}), 500
 
@@ -122,6 +124,6 @@ def download_pdf(book):
     if not os.path.exists(pdf_path):
         return jsonify({"error": "PDF not found"}), 404
     return send_file(pdf_path, as_attachment=True)
-    
+
 if __name__ == "__main__":
     app.run(debug=True)
