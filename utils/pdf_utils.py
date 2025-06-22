@@ -5,11 +5,35 @@ from fpdf import FPDF
 import matplotlib.pyplot as plt
 from datetime import datetime
 
+# def generate_pos_chart(book_name, pos_data):
+#     os.makedirs("static/charts", exist_ok=True)
+#     chart_path = f"static/charts/{book_name.lower()}_pos_chart.png"
+#     plt.figure(figsize=(10, 6))
+#     plt.bar(pos_data.keys(), pos_data.values(), color='teal')
+#     plt.title(f'POS Tag Frequencies: {book_name}')
+#     plt.xlabel('POS Tags')
+#     plt.ylabel('Frequency')
+#     plt.xticks(rotation=45)
+#     plt.tight_layout()
+#     plt.savefig(chart_path)
+#     plt.close()
+#     return chart_path
+
 def generate_pos_chart(book_name, pos_data):
     os.makedirs("static/charts", exist_ok=True)
     chart_path = f"static/charts/{book_name.lower()}_pos_chart.png"
+
+    # 🧼 Clean/sanitize to avoid TypeError
+    cleaned_data = {
+        str(k): int(v) for k, v in pos_data.items()
+        if isinstance(v, (int, float)) and not isinstance(v, dict)
+    }
+
+    if not cleaned_data:
+        raise ValueError("POS data is empty or malformed.")
+
     plt.figure(figsize=(10, 6))
-    plt.bar(pos_data.keys(), pos_data.values(), color='teal')
+    plt.bar(cleaned_data.keys(), cleaned_data.values(), color='teal')
     plt.title(f'POS Tag Frequencies: {book_name}')
     plt.xlabel('POS Tags')
     plt.ylabel('Frequency')
@@ -18,6 +42,7 @@ def generate_pos_chart(book_name, pos_data):
     plt.savefig(chart_path)
     plt.close()
     return chart_path
+
 
 def generate_pdf(book_name, pos_data):
     date_str = datetime.now().strftime("%B %d, %Y")

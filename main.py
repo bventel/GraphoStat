@@ -107,6 +107,10 @@ def analyze():
     # 🔍 Run the POS Distribution Agent
     metrics = POSDistributionAgent.run(book)
 
+    print("[DEBUG] Metrics returned by POSDistributionAgent:")
+    print(metrics)
+
+
     pdf_path = PDFGenerationAgent.run(book, metrics)
 
     if "error" in metrics:
