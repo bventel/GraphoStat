@@ -45,12 +45,21 @@ def generate_pos_chart(book_name, pos_data):
 
 
 def generate_pdf(book_name, pos_data):
+    print("[DEBUG] Starting generate_pdf()")
+    print(f"[DEBUG] Book: {book_name}")
+    print(f"[DEBUG] POS data: {pos_data}")
+
+    pdf_path = f"pdf/{book_name.lower()}_report.pdf"
     date_str = datetime.now().strftime("%B %d, %Y")
     chart_path = generate_pos_chart(book_name, pos_data)
     logo_path = "static/logos/theta_logo.png"
     os.makedirs("pdf", exist_ok=True)
     pdf_path = f"pdf/{book_name.lower()}_report.pdf"
     doi = f"grapho-stat-report-2025-{book_name.lower()}"
+
+    # Check if output folder exists
+    print(f"[DEBUG] Saving to path: {pdf_path}")
+    print(f"[DEBUG] Directory exists? {os.path.exists('pdf')}")
 
     pdf = FPDF()
     pdf.add_page()
