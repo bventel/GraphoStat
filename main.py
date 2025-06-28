@@ -5,6 +5,8 @@ import pandas as pd
 
 from agents.pos_distribution import POSDistributionAgent
 from agents.pdf_agent import PDFGenerationAgent
+from utils.firebase import upload_pdf_to_firestore
+
 
 app = Flask(__name__)
 CORS(app)
@@ -27,6 +29,8 @@ def analyze():
     print("pdf_path: ", pdf_path)
 
     pdf_url = upload_pdf_to_firestore(book, pdf_path)
+    print("[✓] PDF uploaded to Firebase:", pdf_url)
+
 
     if "error" in metrics:
         return jsonify({"error": metrics["error"]}), 500
