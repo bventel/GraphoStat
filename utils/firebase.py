@@ -13,8 +13,12 @@ if not firebase_admin._apps:
     cert_dict = json.loads(firebase_json)
     cred = credentials.Certificate(cert_dict)
 
+    # firebase_admin.initialize_app(cred, {
+    #     "storageBucket": "digitalproducts-97155.firebasestorage.app"
+    # })
+
     firebase_admin.initialize_app(cred, {
-        "storageBucket": "digitalproducts-97155.firebasestorage.app"
+        "storageBucket": "digitalproducts-97155.appspot.com"
     })
 
 def check_if_pdf_exists(book: str) -> str | None:
