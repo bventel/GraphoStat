@@ -152,6 +152,7 @@ def generate_pos_chart(book_name, pos_data):
 
 
 def generate_pdf(book_name, pos_data):
+    print("🛠️ RUNNING UPDATED generate_pdf() from GraphoStat")
     print("[DEBUG] Starting generate_pdf()")
     pdf_path = f"pdf/{book_name.lower()}_report.pdf"
     date_str = datetime.now().strftime("%B %d, %Y")
