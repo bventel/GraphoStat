@@ -22,7 +22,7 @@ if not firebase_admin._apps:
     # })
 
     firebase_admin.initialize_app(cred, {
-    "storageBucket": "gs://digitalproducts-97155.appspot.com"
+    "storageBucket": "digitalproducts-97155.appspot.com"
 })
 
 def check_if_pdf_exists(book: str) -> str | None:
