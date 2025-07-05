@@ -217,27 +217,27 @@ def generate_pdf(book_name, pos_data):
         pdf.image(chart_path, x=10, w=180)
 
     pdf.ln(5)
-pdf.set_font("Arial", "B", 12)
-pdf.cell(0, 10, "Legend for POS Tags:", ln=True)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(0, 10, "Legend for POS Tags:", ln=True)
 
-pdf.set_font("Arial", "", 11)
-legend_text = (
-    "- A: adjective\n"
-    "- C: conjunction\n"
-    "- D: adverb\n"
-    "- I: interjection\n"
-    "- N: noun\n"
-    "- P: preposition\n"
-    "- RA: article\n"
-    "- RD: demonstrative pronoun\n"
-    "- RI: interrogative/indefinite pronoun\n"
-    "- RP: personal pronoun\n"
-    "- RR: relative pronoun\n"
-    "- V: verb\n"
-    "- X: particle"
-)
+    pdf.set_font("Arial", "", 11)
+    legend_text = (
+        "- A: adjective\n"
+        "- C: conjunction\n"
+        "- D: adverb\n"
+        "- I: interjection\n"
+        "- N: noun\n"
+        "- P: preposition\n"
+        "- RA: article\n"
+        "- RD: demonstrative pronoun\n"
+        "- RI: interrogative/indefinite pronoun\n"
+        "- RP: personal pronoun\n"
+        "- RR: relative pronoun\n"
+        "- V: verb\n"
+        "- X: particle"
+    )
 
-pdf.multi_cell(0, 8, legend_text)
+    pdf.multi_cell(0, 8, legend_text)
 
 
     pdf.output(pdf_path)
