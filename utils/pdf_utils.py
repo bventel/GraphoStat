@@ -142,8 +142,8 @@ def generate_pos_chart(book_name, pos_data):
     # plt.ylabel("Frequency")
 
     # Increase font sizes
-    plt.xlabel('POS Tags', fontsize=14)
-    plt.ylabel('Frequency', fontsize=14)
+    plt.xlabel('POS Tags', fontsize=16)
+    plt.ylabel('Frequency', fontsize=16)
     plt.title('Part-of-Speech Tag Distribution', fontsize=16)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
