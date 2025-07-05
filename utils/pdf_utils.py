@@ -155,15 +155,14 @@ def generate_pos_chart(book_name, pos_data):
     # Add value labels close to the top of the bars
     for bar in bars:
         height = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2, height + 5,  # 5 = small vertical offset
+        plt.text(bar.get_x() + bar.get_width() / 2, height - 10,  # 5 = small vertical offset
                 f'{int(height)}',
-                ha='center', va='bottom', fontsize=12)  # Adjust fontsize here too
+                ha='center', va='bottom', fontsize=12, color='white')  # Adjust fontsize here too
 
     plt.tight_layout()
     plt.savefig(chart_path)
     plt.close()
     return chart_path
-
 
 def generate_pdf(book_name, pos_data):
     print("🛠️ RUNNING UPDATED generate_pdf() from GraphoStat")
@@ -210,11 +209,8 @@ def generate_pdf(book_name, pos_data):
     pdf.set_font("Arial", "", 12)
     pdf.multi_cell(0, 10,
         "This section provides a quantitative overview of the frequency of parts of speech in "
-        f"the epistle to {book_name}. The POS codes follow standard MorphGNT conventions."
+        f"the epistle to {book_name}. The POS codes are as follows:"
     )
-
-    if os.path.exists(chart_path):
-        pdf.image(chart_path, x=10, w=180)
 
     pdf.ln(5)
     pdf.set_font("Arial", "B", 12)
@@ -238,7 +234,8 @@ def generate_pdf(book_name, pos_data):
     )
 
     pdf.multi_cell(0, 8, legend_text)
-
+    if os.path.exists(chart_path):
+        pdf.image(chart_path, x=10, w=180)
 
     pdf.output(pdf_path)
     print("[✓] generate_pdf() from pdf_utils.py is running")
