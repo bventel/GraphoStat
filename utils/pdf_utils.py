@@ -138,12 +138,26 @@ def generate_pos_chart(book_name, pos_data):
 
     plt.figure(figsize=(10, 6))
     bars = plt.bar(labels, values, color='teal')
-    plt.xlabel("POS Tags")
-    plt.ylabel("Frequency")
+    # plt.xlabel("POS Tags")
+    # plt.ylabel("Frequency")
 
+    # Increase font sizes
+    plt.xlabel('POS Tags', fontsize=14)
+    plt.ylabel('Frequency', fontsize=14)
+    plt.title('Part-of-Speech Tag Distribution', fontsize=16)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
+
+    # for bar in bars:
+    #     yval = bar.get_height()
+    #     plt.text(bar.get_x() + bar.get_width() / 2, yval + 30, str(yval), ha='center', va='bottom')
+
+    # Add value labels close to the top of the bars
     for bar in bars:
-        yval = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2, yval + 30, str(yval), ha='center', va='bottom')
+        height = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, height + 5,  # 5 = small vertical offset
+                f'{int(height)}',
+                ha='center', va='bottom', fontsize=12)  # Adjust fontsize here too
 
     plt.tight_layout()
     plt.savefig(chart_path)
