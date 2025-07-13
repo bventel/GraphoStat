@@ -159,6 +159,11 @@ def generate_pos_chart(book_name, pos_data):
                 f'{int(height)}',
                 ha='center', va='bottom', fontsize=12, color='white')  # Adjust fontsize here too
 
+    # Remove the top and right box lines ("spines")
+    ax = plt.gca()
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+
     plt.tight_layout()
     plt.savefig(chart_path)
     plt.close()
