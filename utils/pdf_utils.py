@@ -217,9 +217,9 @@ def generate_pdf(book_name, pos_data):
         f"the epistle to {book_name}. The POS codes are as follows:"
     )
 
-    pdf.ln(5)
-    pdf.set_font("Arial", "B", 12)
-    pdf.cell(0, 10, "Legend for POS Tags:", ln=True)
+    # pdf.ln(5)
+    # pdf.set_font("Arial", "B", 12)
+    # pdf.cell(0, 10, "Legend for POS Tags:", ln=True)
 
     pdf.set_font("Arial", "", 11)
     legend_text = (
