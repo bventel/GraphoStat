@@ -144,7 +144,7 @@ def generate_pos_chart(book_name, pos_data):
     # Increase font sizes
     plt.xlabel('POS Tags', fontsize=16)
     plt.ylabel('Frequency', fontsize=16)
-    plt.title('Part-of-Speech Tag Distribution', fontsize=16)
+    # plt.title('Part-of-Speech Tag Distribution', fontsize=16)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
 
@@ -155,9 +155,9 @@ def generate_pos_chart(book_name, pos_data):
     # Add value labels close to the top of the bars
     for bar in bars:
         height = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2, height - 10,  # 5 = small vertical offset
+        plt.text(bar.get_x() + bar.get_width() / 2, height + 5,  # 5 = small vertical offset
                 f'{int(height)}',
-                ha='center', va='bottom', fontsize=12, color='white')  # Adjust fontsize here too
+                ha='center', va='bottom', fontsize=12, color='black')  # Adjust fontsize here too
 
     # Remove the top and right box lines ("spines")
     ax = plt.gca()
