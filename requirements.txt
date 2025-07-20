@@ -9,3 +9,4 @@ firebase-admin
 matplotlib
 pandas
 fpdf    # (or reportlab, depending on PDF engine)
+openai
