@@ -11,6 +11,10 @@ from utils.firebase import upload_pdf_to_firestore
 app = Flask(__name__)
 CORS(app)
 
+# config.py
+
+# LLM_BACKEND = "openai"  # Options: "openai", "gemini", "grok"
+
 @app.route("/analyze", methods=["POST"])
 def analyze():
     data = request.get_json()
@@ -49,6 +53,19 @@ def download_pdf(book):
     if not os.path.exists(pdf_path):
         return jsonify({"error": "PDF not found"}), 404
     return send_file(pdf_path, as_attachment=True)
+
+from utils.llm_router import ask_llm
+
+@app.route("/test_llm", methods=["POST"])
+def test_llm():
+    data = request.get_json()
+    prompt = data.get("prompt", "")
+    if not prompt:
+        return jsonify({"error": "Missing prompt"}), 400
+
+    response = ask_llm(prompt)
+    return jsonify({"response": response})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
