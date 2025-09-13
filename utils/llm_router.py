@@ -4,9 +4,7 @@ from config import LLM_BACKEND
 from secrets import OPENAI_API_KEY
 import openai
 
-openai.api_key = OPENAI_API_KEY
-
-import openai
+# openai.api_key = OPENAI_API_KEY
 
 def ask_openai(prompt: str) -> str:
     try:

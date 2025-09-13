@@ -6,6 +6,7 @@ import pandas as pd
 from agents.pos_distribution import POSDistributionAgent
 from agents.pdf_agent import PDFGenerationAgent
 from utils.firebase import upload_pdf_to_firestore
+from utils.llm_router import ask_llm
 
 
 app = Flask(__name__)
@@ -54,7 +55,7 @@ def download_pdf(book):
         return jsonify({"error": "PDF not found"}), 404
     return send_file(pdf_path, as_attachment=True)
 
-from utils.llm_router import ask_llm
+
 
 @app.route("/test_llm", methods=["POST"])
 def test_llm():
