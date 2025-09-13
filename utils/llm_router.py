@@ -1,7 +1,7 @@
 # llm_router.py
 
 from config import LLM_BACKEND
-from secrets import OPENAI_API_KEY
+# from secrets import OPENAI_API_KEY
 import openai
 
 # openai.api_key = OPENAI_API_KEY
